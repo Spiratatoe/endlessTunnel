@@ -24,7 +24,7 @@ public class spaceship : MonoBehaviour
     
     [Header("=== Boost Settings ===")] 
     [SerializeField]
-    private float maxBoostAmount = 20f;
+    public float maxBoostAmount = 20f;
     [SerializeField]
     private float boostDeprecationRate = 0.25f;
     [SerializeField]
@@ -32,7 +32,7 @@ public class spaceship : MonoBehaviour
     [SerializeField]
     private float boostMultiplier = 5f;
     public bool boosting = false;
-    public float currentBoostAmount;
+    public float currentBoostAmount = 20f;
     
     [SerializeField, Range(0.001f, 0.999f)]
     private float thrustGlideReduction = 0.5f;
@@ -56,6 +56,15 @@ public class spaceship : MonoBehaviour
     [Header("=== shooting ===")] 
     [SerializeField] Boolean Shoot = false;
     public GameObject bullet;
+    public int nbBullets = 5;
+    
+    //power ups + timers 
+    public Boolean scoreUp = false;
+    public Boolean ptsUp = false;
+    public Boolean starUp = false;
+    private float timerScore = 1000;
+    private float timerPoints = 1000;
+    private float timerStar = 1000;
     
     //input values 
     private float thurst1D;
@@ -75,6 +84,42 @@ public class spaceship : MonoBehaviour
         if (transform.position.x > 22 || transform.position.x < -22 || transform.position.y < -5 || transform.position.y > 25)
         {
             Die();
+        }
+        
+        //temp power ups
+        if (scoreUp)
+        {
+            timerScore -= 1;
+            currentMultiplier = 500f;
+            if (timerScore < 0)
+            {
+                scoreUp = false;
+                timerScore = 1000;
+                currentMultiplier = 100f;
+            }
+        }
+        if (ptsUp)
+        {
+            timerPoints -= 1;
+            pointMultiplier = 2f;
+            if (timerPoints < 0)
+            {
+                ptsUp = false;
+                timerPoints = 1000;
+                pointMultiplier = 1f;
+            }
+        }
+        if (starUp)
+        {
+            timerStar -= 1;
+            currentMultiplier = 1000f;
+            pointMultiplier = 3f;
+            if (timerStar < 0)
+            {
+                starUp = false;
+                timerStar = 1000;
+                pointMultiplier = 1f;
+            }
         }
 
     }
@@ -123,8 +168,9 @@ public class spaceship : MonoBehaviour
 
     void HandleShooting()
     {
-        if (Shoot)
+        if (Shoot && nbBullets > 0)
         {
+            nbBullets -= 1;
             Instantiate(bullet, new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z + 3.0f ),Quaternion.Euler(new Vector3(90, 0, 0)));
         }
     }
