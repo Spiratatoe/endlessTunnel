@@ -23,4 +23,7 @@ Pretty much all the 3d models were taken from the Unity 3d store :
 
 <img width="356" alt="Screenshot 2023-11-21 at 12 34 19 PM" src="https://github.com/Spiratatoe/endlessTunnel/assets/95253269/9d50475c-7903-42b0-8c1c-eac9680e1445">
 
-as were the sounds, they were taken from no copyright sources 
+in addition to Shoot´em up Enemy Spikeball by VIS Games
+
+as were the sounds, they were taken from various free sources 
+exg song is Stardust by Danijel Zambo on Upbeat
