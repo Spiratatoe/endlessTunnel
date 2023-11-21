@@ -15,6 +15,7 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCollectables();
+            temp.GetComponent<GroundTile>().SpawnPowers();
         }
     }
 

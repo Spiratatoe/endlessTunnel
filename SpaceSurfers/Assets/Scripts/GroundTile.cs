@@ -29,16 +29,28 @@ public class GroundTile : MonoBehaviour
     }
 
     public GameObject obstaclePrefab;
+    public GameObject obstaclePrefab2;
 
     public void SpawnObstacle()
     {
+        GameObject obstacle = obstaclePrefab; //by default 
+        int mystery = Random.Range(1, 3); // 1 to 2 
+        switch (mystery)
+        {
+            case 1:
+                obstacle = obstaclePrefab;
+                break;
+            case 2:
+                obstacle = obstaclePrefab2;
+                break;
+        }
+
         // choose a random point 
         int obstacleSpawnIndex = Random.Range(2, 7); //nb between 2 and 6 
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
         
-        
         // spawn the obstacle
-        Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
+        Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
     }
 
     public GameObject collectablePrefab;
@@ -67,5 +79,59 @@ public class GroundTile : MonoBehaviour
 
         return point;
 
+    }
+    
+    public GameObject scorePrefab;
+    public GameObject pointPrefab;
+    public GameObject bulletPrefab;
+    public GameObject healPrefab;
+    public GameObject starPrefab;
+    
+    public GameObject hpPrefab;
+    public GameObject boostPrefab;
+    public GameObject multiplierPrefab;
+    
+    public void SpawnPowers()
+    {
+        GameObject temp;
+        int mystery = Random.Range(1, 9); // 1 to 8 
+        switch(mystery) 
+        {
+            case 1:
+                temp = Instantiate(scorePrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 2:
+                temp = Instantiate(pointPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 3:
+                temp = Instantiate(bulletPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 4:
+                temp = Instantiate(healPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 5:
+                temp = Instantiate(starPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 6:
+                temp = Instantiate(hpPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 7:
+                temp = Instantiate(boostPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            case 8:
+                temp = Instantiate(multiplierPrefab, transform); // transform attaches it to parent and destroys with it 
+                temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+                break;
+            
+        }
+        
+        
     }
 }

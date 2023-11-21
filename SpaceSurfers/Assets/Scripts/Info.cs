@@ -10,6 +10,7 @@ public class Info : MonoBehaviour
     public TextMeshProUGUI Points;
     public TextMeshProUGUI Bullet;
     public TextMeshProUGUI Boost;
+    public TextMeshProUGUI Health;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +24,6 @@ public class Info : MonoBehaviour
         Points.text = "Points : " + player.GetComponent<spaceship>().pts;
         Bullet.text = "Bullet : " + player.GetComponent<spaceship>().nbBullets;
         Boost.text = "Boost : " + player.GetComponent<spaceship>().currentBoostAmount;
+        Health.text = "Health : " + player.GetComponent<spaceship>().hp + " / " + player.GetComponent<spaceship>().maxHp;
     }
 }

@@ -81,7 +81,7 @@ public class spaceship : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x > 22 || transform.position.x < -22 || transform.position.y < -5 || transform.position.y > 25)
+        if (transform.position.x > 22 || transform.position.x < -22 || transform.position.y < -5 || transform.position.y > 20)
         {
             Die();
         }

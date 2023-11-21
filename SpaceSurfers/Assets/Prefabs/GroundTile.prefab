@@ -347,7 +347,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 7437889339238721774, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
+  obstaclePrefab2: {fileID: 2746130058158584518, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
   collectablePrefab: {fileID: 990518421876816534, guid: 0a3b47fa12a5d410fbf278b361382b36, type: 3}
+  scorePrefab: {fileID: 806503671225726758, guid: f23254932be45403b87357060b64e7ca, type: 3}
+  pointPrefab: {fileID: 2184320952845360410, guid: d7105508f5a394900a36d9f758e7de84, type: 3}
+  bulletPrefab: {fileID: 360512968442489657, guid: 5b32febfc14a44112968860d2e778d60, type: 3}
+  healPrefab: {fileID: 1120202775484094659, guid: 05fc552e4cf554a58976a1837012b930, type: 3}
+  starPrefab: {fileID: 510021904655426824, guid: fd081b8ecfe6040f1babf2929644e051, type: 3}
+  hpPrefab: {fileID: 5960034591122988561, guid: 352f19af6d27a4f88bfe15644f1bc3e1, type: 3}
+  boostPrefab: {fileID: 6146956162512672225, guid: 550ad927a8583485b9f9c60dbaf55e93, type: 3}
+  multiplierPrefab: {fileID: 978331331711529335, guid: aad75b7aa98304079b18ace5ec2a6d53, type: 3}
 --- !u!1 &6352047248868316104
 GameObject:
   m_ObjectHideFlags: 0
