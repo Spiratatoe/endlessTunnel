@@ -1,4 +1,4 @@
-# endlessTunnel
+# Space Surfers
 the goal was to create a type of endless tunnel game in unity 3d engine
 it should be different from the popular approach like temple run and subway surfers in the way that it allows all direction movement 
 
