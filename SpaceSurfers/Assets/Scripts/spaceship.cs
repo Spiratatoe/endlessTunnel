@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class spaceship : MonoBehaviour
@@ -43,12 +44,12 @@ public class spaceship : MonoBehaviour
 
     [Header("=== stats ===")] 
     public GameObject player;
-    public float hp;
-    public float maxHp;
-    public float distanceTravelled;
-    public float pts;
+    public float hp = 5;
+    public float maxHp = 5;
+    public float distanceTravelled = 0;
+    public float pts = 0;
     public float currentMultiplier = 100f;
-    
+    public Boolean alive = true; 
     private Rigidbody rb;
     
     //input values 
@@ -64,11 +65,35 @@ public class spaceship : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        if (transform.position.z > 3000)
+        {
+            Die();
+        }
+    }
     void FixedUpdate()
     {
+        if (!alive) return;
         HandleBoosting();
         HandleMovement();
         CalculateScore();
+    }
+
+    public void TakeDamage(float dam)
+    {
+        hp = hp - dam;
+        if (hp == 0.0f)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        alive = false;
+        // restart game change to a death screen later 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void CalculateScore()

@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GroundTile : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GroundTile : MonoBehaviour
     void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
+        SpawnObstacle();
     }
 
     private void OnTriggerExit(Collider other)
@@ -21,5 +23,18 @@ public class GroundTile : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public GameObject obstaclePrefab;
+
+    void SpawnObstacle()
+    {
+        // choose a random point 
+        int obstacleSpawnIndex = Random.Range(2, 7); //nb between 2 and 6 
+        Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
+        
+        
+        // spawn the obstacle
+        Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }
 }
