@@ -46,7 +46,7 @@ public class spaceship : MonoBehaviour
     public GameObject player;
     public float hp = 5;
     public float maxHp = 5;
-    public float distanceTravelled = 0;
+    public double distanceTravelled = 0;
     public float pts = 0;
     public float pointMultiplier = 1.0f;
     public float currentMultiplier = 100f;

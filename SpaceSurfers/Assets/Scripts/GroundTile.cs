@@ -17,8 +17,8 @@ public class GroundTile : MonoBehaviour
     {
         if (other.gameObject.name == "PlayerObj" || other.gameObject.name == "Player")
         {
-            groundSpawner.SpawnTile(true);
-            Destroy(gameObject, 2); // will destroy the object 2 second after passing the trigger 
+            groundSpawner.SpawnTile(true, true);
+            Destroy(gameObject, 8); // will destroy the object 2 second after passing the trigger 
         }
     }
 
@@ -51,6 +51,18 @@ public class GroundTile : MonoBehaviour
         
         // spawn the obstacle
         Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
+    }
+
+    public GameObject robotPre;
+    public void SpawnRobot()
+    {
+        int mystery = Random.Range(1, 3); // 1 to 2 
+        if (mystery == 1)
+        {
+            Vector3 temp = GetRandomPointInCollider(GetComponent<Collider>());
+            Instantiate(robotPre, new Vector3(-13f,15f,temp.z), Quaternion.identity, transform);
+        }
+        
     }
 
     public GameObject collectablePrefab;

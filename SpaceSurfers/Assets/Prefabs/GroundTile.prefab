@@ -348,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 7437889339238721774, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
   obstaclePrefab2: {fileID: 2746130058158584518, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+  robotPre: {fileID: 1410886646748879787, guid: 19a5e407eadaa4858bd0dad3af97ec36, type: 3}
   collectablePrefab: {fileID: 990518421876816534, guid: 0a3b47fa12a5d410fbf278b361382b36, type: 3}
   scorePrefab: {fileID: 806503671225726758, guid: f23254932be45403b87357060b64e7ca, type: 3}
   pointPrefab: {fileID: 2184320952845360410, guid: d7105508f5a394900a36d9f758e7de84, type: 3}
