@@ -48,9 +48,14 @@ public class spaceship : MonoBehaviour
     public float maxHp = 5;
     public float distanceTravelled = 0;
     public float pts = 0;
+    public float pointMultiplier = 1.0f;
     public float currentMultiplier = 100f;
     public Boolean alive = true; 
     private Rigidbody rb;
+    
+    [Header("=== shooting ===")] 
+    [SerializeField] Boolean Shoot = false;
+    public GameObject bullet;
     
     //input values 
     private float thurst1D;
@@ -67,14 +72,16 @@ public class spaceship : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.z > 3000)
+        if (transform.position.x > 22 || transform.position.x < -22 || transform.position.y < -5 || transform.position.y > 25)
         {
             Die();
         }
+
     }
     void FixedUpdate()
     {
         if (!alive) return;
+        HandleShooting();
         HandleBoosting();
         HandleMovement();
         CalculateScore();
@@ -82,10 +89,23 @@ public class spaceship : MonoBehaviour
 
     public void TakeDamage(float dam)
     {
-        hp = hp - dam;
+        hp -= dam;
         if (hp == 0.0f)
         {
             Die();
+        }
+    }
+
+    public void gainPoints(int color)
+    {
+        if (color == 0)
+        {
+            pts += 1 * pointMultiplier;
+            thrust += 3.0f;
+        }
+        else if (color == 1)
+        {
+            pts += 3 * pointMultiplier;
         }
     }
 
@@ -99,6 +119,14 @@ public class spaceship : MonoBehaviour
     void CalculateScore()
     {
         distanceTravelled = (player.transform.position.z - 8.39f) * currentMultiplier;
+    }
+
+    void HandleShooting()
+    {
+        if (Shoot)
+        {
+            Instantiate(bullet, new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z + 3.0f ),Quaternion.Euler(new Vector3(90, 0, 0)));
+        }
     }
 
     void HandleBoosting()
@@ -219,6 +247,14 @@ public class spaceship : MonoBehaviour
     public void OnBoost(InputAction.CallbackContext context)
     {
         boosting = context.performed;
+    }
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (!context.started) Shoot = false;
+        else
+        {
+            Shoot = true;
+        }
     }
     #endregion
 }

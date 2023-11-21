@@ -18,10 +18,17 @@ public class Fracture : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            Debug.Log("does this happen?????");
             //take damage or die
             FractureObject();
             collision.gameObject.GetComponent<spaceship>().TakeDamage(1);
             //PlayerMovement.Die();
+        }
+
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("does this happen");
+            FractureObject();
         }
     }
 }

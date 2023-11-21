@@ -9,18 +9,22 @@ public class Collectables : MonoBehaviour
     //private float turnSpeed = 90f;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hey there");
-        // check that the object collided is player
-        if (other.gameObject.name != "PlayerObj")
+        if (other.gameObject.GetComponent<Obstacle>() != null)
         {
-            Debug.Log("does it do this");
+            Debug.Log("collided in rock");
+            Destroy(gameObject);
             return;
         }
-        // add to the players score 
-        
-        //destroy orb
-        Destroy(gameObject); // when lower case it means it is this object 
-        Debug.Log("end");
+       
+        // check that the object collided is player
+        if (other.gameObject.name == "PlayerObj")
+        {
+            //gain pts
+            other.transform.parent.gameObject.GetComponent<spaceship>().gainPoints(0);
+            //destroy obj
+            Destroy(gameObject);
+            
+        }
     }
 
     // Start is called before the first frame update
