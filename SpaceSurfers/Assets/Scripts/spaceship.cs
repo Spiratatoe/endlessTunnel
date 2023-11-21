@@ -73,10 +73,14 @@ public class spaceship : MonoBehaviour
     private float roll1D;
     private Vector2 pitchYaw;
     
+    //extra 
+    private int difficulty = 1;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        difficulty = PlayerPrefs.GetInt("Difficulty");
     }
 
     private void Update()
@@ -146,7 +150,7 @@ public class spaceship : MonoBehaviour
         if (color == 0)
         {
             pts += 1 * pointMultiplier;
-            thrust += 3.0f;
+            thrust += 2.0f * difficulty;
         }
         else if (color == 1)
         {
@@ -158,7 +162,10 @@ public class spaceship : MonoBehaviour
     {
         alive = false;
         // restart game change to a death screen later 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString("Score", Math.Round(distanceTravelled).ToString());
+        PlayerPrefs.SetString("Points", pts.ToString());
+        SceneManager.LoadScene("LoseScreen");
+        
     }
 
     void CalculateScore()
