@@ -37,4 +37,32 @@ public class GroundTile : MonoBehaviour
         // spawn the obstacle
         Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }
+
+    public GameObject collectablePrefab;
+
+    void SpawnCollectables()
+    {
+        int nbToSpawn = 10;
+        for (int i = 0; i < nbToSpawn; i++)
+        {
+            GameObject temp = Instantiate(collectablePrefab);
+            
+        }
+    }
+
+    Vector3 GetRandomPointInCollider(Collider collider)
+    {
+        Vector3 point = new Vector3(
+            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
+            Random.Range(10, 20),
+            Random.Range(collider.bounds.min.z, collider.bounds.max.z)
+        );
+        if (point != collider.ClosestPoint(point))
+        { // just in case you mess up
+            point = GetRandomPointInCollider(collider);
+        }
+
+        return point;
+
+    }
 }
