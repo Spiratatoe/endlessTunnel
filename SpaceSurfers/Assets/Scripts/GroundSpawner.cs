@@ -14,6 +14,7 @@ public class GroundSpawner : MonoBehaviour
         if (spawnItems)
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
+            temp.GetComponent<GroundTile>().SpawnSpike();
             temp.GetComponent<GroundTile>().SpawnCollectables();
             temp.GetComponent<GroundTile>().SpawnPowers();
             if (robots)

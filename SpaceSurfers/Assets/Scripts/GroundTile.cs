@@ -52,7 +52,19 @@ public class GroundTile : MonoBehaviour
         // spawn the obstacle
         Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
     }
-
+    
+    public GameObject spikePrefab;
+    public void SpawnSpike()
+    {
+        GameObject obstacle = spikePrefab; //by default 
+        // choose a random point 
+        int obstacleSpawnIndex = Random.Range(7, 9); //nb between 7 and 8 
+        Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
+        
+        // spawn the obstacle
+        Instantiate(obstacle, spawnPoint.position, Quaternion.identity, transform);
+    }
+    
     public GameObject robotPre;
     public void SpawnRobot()
     {
