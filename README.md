@@ -6,6 +6,8 @@ speaking of which here are the controls:
 
 <img width="442" alt="Screenshot 2023-11-21 at 12 31 34 PM" src="https://github.com/Spiratatoe/endlessTunnel/assets/95253269/72a56947-8dc1-4c23-ae9b-10bce0b3cd49">
 
+Some of the movements were turned off such as pitch, roll, yaw as they hindered the player more than helped
+
 There a multiple types of Obstacles:
 robots are unkillable by lasers and deal 5 dmg
 asteroids are breakable by lasers and deal 1 hp, but hit them fast enough and you'll fly off course!
